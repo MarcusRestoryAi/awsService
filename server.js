@@ -1,7 +1,12 @@
 const express = require("express")
-const message = require("./service.js")
+const {message, greetings} = require("./service.js")
 const app = new express()
 const portNr = 8080
+
+//Hämta in Body-Parser
+const bodyParser = require("body-parser")
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 //Init service
 app.listen(portNr, () => {
@@ -9,5 +14,11 @@ app.listen(portNr, () => {
 })
 
 app.get("", (req, res) => {
-  res.send(message)
+  res.send(message())
+})
+
+app.post("", (req, res) => {
+  //Hämta payload från request
+  const data = req.body
+  res.send( greetings(data.name) )
 })

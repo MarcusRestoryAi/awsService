@@ -2,4 +2,8 @@ function message() {
   return "Hejsan från server!"
 }
 
-module.exports = message()
+function greetings(name) {
+  return `Hejsan ${name}`
+}
+
+module.exports = { message, greetings }
