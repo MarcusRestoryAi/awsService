@@ -17,6 +17,10 @@ app.get("", (req, res) => {
   res.send(message())
 })
 
+app.get("/chas", (req, res) => {
+  res.send("Hejsan från Chas")
+})
+
 app.post("", (req, res) => {
   //Hämta payload från request
   const data = req.body
